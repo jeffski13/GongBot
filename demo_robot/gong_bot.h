@@ -1,9 +1,11 @@
 // Defines higher-order functions for the robot
 #include "motor.h"
+#include "mallet.h"
 
 #define DANGER_THRESHOLD_CM 5
 #define EVADE_REVERSE_DURATION 2000
 #define EVADE_PAUSE_DURATION 800
+#define GONG_PAUSE_DURATION 2000
 #define STRIKING_DISTANCE_CM 7
 
 enum Danger_Side {
@@ -12,6 +14,8 @@ enum Danger_Side {
   Danger_Both,
   Danger_None
 };
+
+//Servo mallet;
 
 void evade_edge(Danger_Side danger_side) {
   motor_stop();
@@ -59,5 +63,15 @@ bool gong_is_detected(long center_range_cm) {
   }
 
   return false;
+}
+
+void gong() {
+  motor_stop();
+  mallet_swing();
+  mallet_retract();
+
+  delay(GONG_PAUSE_DURATION);
+  
+  evade_edge(Danger_Both);
 }
 
