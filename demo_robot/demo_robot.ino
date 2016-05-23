@@ -1,10 +1,12 @@
 #include <DistanceSensor.h>
 #include <Servo.h>
 
-#define MOTOR_LEFT_PIN_0 5
+#include "motor.h"
+
+/*#define MOTOR_LEFT_PIN_0 5
 #define MOTOR_LEFT_PIN_1 6
 #define MOTOR_RIGHT_PIN_0 11
-#define MOTOR_RIGHT_PIN_1 10
+#define MOTOR_RIGHT_PIN_1 10*/
 #define MALLET_PIN 7
 #define PING_LEFT_TRIG_PIN 9
 #define PING_LEFT_ECHO_PIN 8
@@ -13,10 +15,10 @@
 #define PING_RIGHT_TRIG_PIN 3
 #define PING_RIGHT_ECHO_PIN 2
 
-#define DRIVE_SLOW 100
+/*#define DRIVE_SLOW 100
 #define DRIVE_MED  180
 #define DRIVE_FAST 230
-#define DRIVE_STOP 0
+#define DRIVE_STOP 0*/
 
 #define MALLET_EXTEND_POS 70
 #define MALLET_SNAP_POS 100
@@ -82,7 +84,7 @@ void loop() {
 
 //////////////////////////////////////////////////////////////////////////
 // MOTOR FUNCTIONS
-void motor_drive_fwd(int speed) {
+/*void motor_drive_fwd(int speed) {
   analogWrite(MOTOR_LEFT_PIN_0, speed);
   analogWrite(MOTOR_LEFT_PIN_1, DRIVE_STOP);
 
@@ -102,7 +104,7 @@ void motor_turn_left(int speed) {
 }
 
 void motor_turn_right(int speed) {
-}
+}*/
 
 //////////////////////////////////////////////////////////////////////////
 // MALLET FUNCTIONS
