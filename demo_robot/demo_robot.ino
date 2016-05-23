@@ -20,10 +20,7 @@ DistanceSensor right_ping(PING_RIGHT_TRIG_PIN, PING_RIGHT_ECHO_PIN);
 DistanceSensor center_ping(PING_CENTER_TRIG_PIN, PING_CENTER_ECHO_PIN);
 
 void setup() {
-  pinMode(MOTOR_LEFT_PIN_0, OUTPUT);
-  pinMode(MOTOR_LEFT_PIN_1, OUTPUT);
-  pinMode(MOTOR_RIGHT_PIN_0, OUTPUT);
-  pinMode(MOTOR_RIGHT_PIN_1, OUTPUT);
+  motor_init();
   
   mallet_init(&mallet);
     
@@ -37,11 +34,6 @@ void setup() {
 }
 
 void loop() {
-  //Serial.print("Driving forward at speed: ");
-  //Serial.println(DRIVE_SLOW, DEC);
-
-  //motor_drive_fwd(DRIVE_SLOW);
-  //motor_drive_rev(DRIVE_SLOW);
 
   left_ping_cm = left_ping.getDistance(true);
   right_ping_cm = right_ping.getDistance(true);

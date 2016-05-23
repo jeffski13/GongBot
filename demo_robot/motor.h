@@ -19,6 +19,13 @@ enum Direction {
   Direction_Right
 };
 
+void motor_init(void) {
+  pinMode(MOTOR_LEFT_PIN_0, OUTPUT);
+  pinMode(MOTOR_LEFT_PIN_1, OUTPUT);
+  pinMode(MOTOR_RIGHT_PIN_0, OUTPUT);
+  pinMode(MOTOR_RIGHT_PIN_1, OUTPUT);
+}
+
 void motor_drive_fwd(int speed) {
   analogWrite(MOTOR_LEFT_PIN_0, speed);
   analogWrite(MOTOR_LEFT_PIN_1, DRIVE_STOP);
