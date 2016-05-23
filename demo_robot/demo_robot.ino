@@ -1,7 +1,7 @@
 #include <DistanceSensor.h>
 #include <Servo.h>
 
-#include "motor.h"
+#include "gong_bot.h"
 
 #define MALLET_PIN 7
 #define PING_LEFT_TRIG_PIN 9
@@ -37,9 +37,8 @@ void setup() {
 
   // Wait a little while, then start driving forward
   delay(2000);
-  //motor_drive_fwd(DRIVE_SLOW);
-  motor_pivot(Direction_Left, Turn_Angle_Large, DRIVE_SLOW);
-
+  motor_drive_fwd(DRIVE_SLOW);
+  
   while(1) {}
 }
 
