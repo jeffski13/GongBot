@@ -12,6 +12,7 @@
 #define MOTOR_RIGHT_PIN_0         11
 #define MOTOR_RIGHT_PIN_1         10
 
+// TODO Tune these drive values
 #define DRIVE_SLOW                100
 #define DRIVE_MED                 180
 #define DRIVE_FAST                230

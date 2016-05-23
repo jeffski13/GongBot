@@ -33,6 +33,8 @@ enum Danger_Side {
  */
 void evade_edge(Danger_Side danger_side) {
   motor_stop();
+
+  // TODO Refine this drive value. Consider a slow moving robot that evades quickly and vice versa
   motor_drive_rev(DRIVE_SLOW);
   delay(EVADE_REVERSE_DURATION);
   
