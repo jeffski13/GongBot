@@ -1,6 +1,5 @@
 #include <DistanceSensor.h>
 #include <Servo.h>
-#include "motor.h"
 
 #define MOTOR_LEFT_PIN_0 5
 #define MOTOR_LEFT_PIN_1 6
@@ -29,15 +28,15 @@ long left_ping_cm;
 long right_ping_cm;
 long center_ping_cm;
 
+DistanceSensor left_ping(PING_LEFT_TRIG_PIN, PING_LEFT_ECHO_PIN);
+DistanceSensor right_ping(PING_RIGHT_TRIG_PIN, PING_RIGHT_ECHO_PIN);
+DistanceSensor center_ping(PING_CENTER_TRIG_PIN, PING_CENTER_ECHO_PIN);
+
 void setup() {
   pinMode(MOTOR_LEFT_PIN_0, OUTPUT);
   pinMode(MOTOR_LEFT_PIN_1, OUTPUT);
   pinMode(MOTOR_RIGHT_PIN_0, OUTPUT);
   pinMode(MOTOR_RIGHT_PIN_1, OUTPUT);
-
-  DistanceSensor left_ping(PING_LEFT_TRIG_PIN, PING_LEFT_ECHO_PIN);
-  DistanceSensor right_ping(PING_RIGHT_TRIG_PIN, PING_RIGHT_ECHO_PIN);
-  DistanceSensor center_ping(PING_CENTER_TRIG_PIN, PING_CENTER_ECHO_PIN);
   
   //mallet.attach(MALLET_PIN);
     
@@ -49,12 +48,22 @@ void setup() {
 }
 
 void loop() {
-  Serial.print("Driving forward at speed: ");
-  Serial.println(DRIVE_SLOW, DEC);
+  //Serial.print("Driving forward at speed: ");
+  //Serial.println(DRIVE_SLOW, DEC);
 
   //motor_drive_fwd(DRIVE_SLOW);
-  motor_drive_rev(DRIVE_SLOW);
+  //motor_drive_rev(DRIVE_SLOW);
   //mallet_swing();
+
+  left_ping_cm = left_ping.getDistance(true);
+  right_ping_cm = right_ping.getDistance(true);
+  center_ping_cm = center_ping.getDistance(true);
+  //Serial.print("Left Distance: ");
+  //Serial.println(left_ping_cm, DEC);
+  //Serial.print("  Center Distance: ");
+  //Serial.println(center_ping_cm, DEC);
+  Serial.print("  Right Distance: ");
+  Serial.println(right_ping_cm, DEC);
 
   return;
 
