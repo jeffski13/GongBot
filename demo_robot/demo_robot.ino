@@ -3,10 +3,6 @@
 
 #include "motor.h"
 
-/*#define MOTOR_LEFT_PIN_0 5
-#define MOTOR_LEFT_PIN_1 6
-#define MOTOR_RIGHT_PIN_0 11
-#define MOTOR_RIGHT_PIN_1 10*/
 #define MALLET_PIN 7
 #define PING_LEFT_TRIG_PIN 9
 #define PING_LEFT_ECHO_PIN 8
@@ -14,11 +10,6 @@
 #define PING_CENTER_ECHO_PIN 13
 #define PING_RIGHT_TRIG_PIN 3
 #define PING_RIGHT_ECHO_PIN 2
-
-/*#define DRIVE_SLOW 100
-#define DRIVE_MED  180
-#define DRIVE_FAST 230
-#define DRIVE_STOP 0*/
 
 #define MALLET_EXTEND_POS 70
 #define MALLET_SNAP_POS 100
@@ -46,7 +37,10 @@ void setup() {
 
   // Wait a little while, then start driving forward
   delay(2000);
-  motor_drive_fwd(DRIVE_SLOW);
+  //motor_drive_fwd(DRIVE_SLOW);
+  motor_pivot(Direction_Left, Turn_Angle_Large, DRIVE_SLOW);
+
+  while(1) {}
 }
 
 void loop() {
@@ -64,8 +58,8 @@ void loop() {
   //Serial.println(left_ping_cm, DEC);
   //Serial.print("  Center Distance: ");
   //Serial.println(center_ping_cm, DEC);
-  Serial.print("  Right Distance: ");
-  Serial.println(right_ping_cm, DEC);
+  //Serial.print("  Right Distance: ");
+  //Serial.println(right_ping_cm, DEC);
 
   return;
 
@@ -81,30 +75,6 @@ void loop() {
   //        retract the mallet, wait, reverse and turn as if an edge was detected on both sensors
   // 3.2 - Else keep moving forward (continue)
 }
-
-//////////////////////////////////////////////////////////////////////////
-// MOTOR FUNCTIONS
-/*void motor_drive_fwd(int speed) {
-  analogWrite(MOTOR_LEFT_PIN_0, speed);
-  analogWrite(MOTOR_LEFT_PIN_1, DRIVE_STOP);
-
-  analogWrite(MOTOR_RIGHT_PIN_0, speed);
-  analogWrite(MOTOR_RIGHT_PIN_1, DRIVE_STOP);
-}
-
-void motor_drive_rev(int speed) {
-  analogWrite(MOTOR_LEFT_PIN_0, DRIVE_STOP);
-  analogWrite(MOTOR_LEFT_PIN_1, speed);
-
-  analogWrite(MOTOR_RIGHT_PIN_0, DRIVE_STOP);
-  analogWrite(MOTOR_RIGHT_PIN_1, speed);
-}
-
-void motor_turn_left(int speed) {
-}
-
-void motor_turn_right(int speed) {
-}*/
 
 //////////////////////////////////////////////////////////////////////////
 // MALLET FUNCTIONS

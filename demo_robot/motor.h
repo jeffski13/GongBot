@@ -45,7 +45,7 @@ void motor_stop(void) {
 void motor_pivot(enum Direction dir, enum Turn_Angle angle, int speed) {
   motor_stop();
 
-  if (dir = Direction_Left) {
+  if (dir == Direction_Left) {
     analogWrite(MOTOR_RIGHT_PIN_0, speed);
     analogWrite(MOTOR_RIGHT_PIN_1, DRIVE_STOP);     
   } else {
@@ -57,18 +57,20 @@ void motor_pivot(enum Direction dir, enum Turn_Angle angle, int speed) {
   
   switch (angle) {
     case Turn_Angle_Small:
-      turn_delay = 250;
+      turn_delay = 1000;
       break;
      case Turn_Angle_Med:
-      turn_delay = 500;
+      turn_delay = 2000;
       break;
      case Turn_Angle_Large:
-      turn_delay = 1000;
+      turn_delay = 4000;
       break;
      default:
       turn_delay = 500;
   }
 
   delay(turn_delay);
+
+  motor_stop();
 }
 
