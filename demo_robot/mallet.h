@@ -11,10 +11,10 @@
 
 #define MALLET_PIN                7
 
-#define MALLET_EXTEND_POS         70
-#define MALLET_SNAP_POS           100
-#define MALLET_RETRACT_POS        160
-#define MALLET_SNAP_DURATION      500
+#define MALLET_EXTEND_POS         90
+#define MALLET_SNAP_POS           60
+#define MALLET_RETRACT_POS        10
+#define MALLET_SNAP_DURATION      200
 #define MALLET_RETRACT_DURATION   1000
 
 Servo* my_mallet;

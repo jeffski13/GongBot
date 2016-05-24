@@ -14,10 +14,10 @@
 #include "ping.h"
 
 #define DANGER_THRESHOLD_CM       5
-#define EVADE_REVERSE_DURATION    2000
+#define EVADE_REVERSE_DURATION    2500
 #define EVADE_PAUSE_DURATION      800
 #define GONG_PAUSE_DURATION       2000
-#define STRIKING_DISTANCE_CM      7
+#define STRIKING_DISTANCE_CM      8
 #define MAX_RANGE_FLAG            0
 
 // Lists the different danger states for table edge detection
@@ -41,13 +41,13 @@ void evade_edge(Danger_Side danger_side) {
     
   switch (danger_side) {
     case Danger_Left:
-      motor_pivot(Direction_Right, Turn_Angle_Med, DRIVE_MED);
+      motor_pivot(Direction_Right, Turn_Angle_Med, DRIVE_SLOW);
       break;
     case Danger_Right:
-      motor_pivot(Direction_Left, Turn_Angle_Med, DRIVE_MED);
+      motor_pivot(Direction_Left, Turn_Angle_Med, DRIVE_SLOW);
       break;
     case Danger_Both:
-      motor_pivot(Direction_Left, Turn_Angle_Large, DRIVE_MED);
+      motor_pivot(Direction_Left, Turn_Angle_Large, DRIVE_SLOW);
       break;
     default:
       // This is for the Danger_None case, which should not occur.

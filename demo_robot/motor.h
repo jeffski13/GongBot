@@ -45,8 +45,8 @@ void motor_init(void) {
  * between 0 and 255.
  */
 void motor_drive_fwd(int speed) {
-  analogWrite(MOTOR_LEFT_PIN_0, speed);
-  analogWrite(MOTOR_LEFT_PIN_1, DRIVE_STOP);
+  //analogWrite(MOTOR_LEFT_PIN_0, speed);
+  //analogWrite(MOTOR_LEFT_PIN_1, DRIVE_STOP);
 
   analogWrite(MOTOR_RIGHT_PIN_0, speed);
   analogWrite(MOTOR_RIGHT_PIN_1, DRIVE_STOP);
@@ -57,8 +57,8 @@ void motor_drive_fwd(int speed) {
  * between 0 and 255.
  */
 void motor_drive_rev(int speed) {
-  analogWrite(MOTOR_LEFT_PIN_0, DRIVE_STOP);
-  analogWrite(MOTOR_LEFT_PIN_1, speed);
+  //analogWrite(MOTOR_LEFT_PIN_0, DRIVE_STOP);
+  //analogWrite(MOTOR_LEFT_PIN_1, speed);
 
   analogWrite(MOTOR_RIGHT_PIN_0, DRIVE_STOP);
   analogWrite(MOTOR_RIGHT_PIN_1, speed);
