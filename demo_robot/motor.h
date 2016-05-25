@@ -7,10 +7,14 @@
  * used to move the robot.
  */
  
-#define MOTOR_LEFT_PIN_0          5
-#define MOTOR_LEFT_PIN_1          6
-#define MOTOR_RIGHT_PIN_0         11
-#define MOTOR_RIGHT_PIN_1         10
+#define MOTOR_LEFT_PIN_0          6
+#define MOTOR_LEFT_PIN_1          11
+#define MOTOR_RIGHT_PIN_0         5
+#define MOTOR_RIGHT_PIN_1         3
+
+#define RIGHT_MOTOR_FUDGE_FWD     32
+#define RIGHT_MOTOR_FUDGE_REV     35
+#define RIGHT_MOTOR_TURN_FUDGE    40
 
 #define DRIVE_SLOW                100
 #define DRIVE_MED                 180
@@ -45,8 +49,8 @@ void motor_init(void) {
  * between 0 and 255.
  */
 void motor_drive_fwd(int speed) {
-  //analogWrite(MOTOR_LEFT_PIN_0, speed);
-  //analogWrite(MOTOR_LEFT_PIN_1, DRIVE_STOP);
+  analogWrite(MOTOR_LEFT_PIN_0, speed + RIGHT_MOTOR_FUDGE_FWD);
+  analogWrite(MOTOR_LEFT_PIN_1, DRIVE_STOP);
 
   analogWrite(MOTOR_RIGHT_PIN_0, speed);
   analogWrite(MOTOR_RIGHT_PIN_1, DRIVE_STOP);
@@ -57,8 +61,8 @@ void motor_drive_fwd(int speed) {
  * between 0 and 255.
  */
 void motor_drive_rev(int speed) {
-  //analogWrite(MOTOR_LEFT_PIN_0, DRIVE_STOP);
-  //analogWrite(MOTOR_LEFT_PIN_1, speed);
+  analogWrite(MOTOR_LEFT_PIN_0, DRIVE_STOP);
+  analogWrite(MOTOR_LEFT_PIN_1, speed + RIGHT_MOTOR_FUDGE_REV);
 
   analogWrite(MOTOR_RIGHT_PIN_0, DRIVE_STOP);
   analogWrite(MOTOR_RIGHT_PIN_1, speed);
@@ -83,7 +87,7 @@ void motor_pivot(Direction dir, Turn_Angle angle, int speed) {
 
   if (dir == Direction_Left) {
     // Command the right wheel to turn left
-    analogWrite(MOTOR_RIGHT_PIN_0, speed);
+    analogWrite(MOTOR_RIGHT_PIN_0, speed + RIGHT_MOTOR_TURN_FUDGE);
     analogWrite(MOTOR_RIGHT_PIN_1, DRIVE_STOP);     
   } else {
     // Command the left wheel to turn right
@@ -99,10 +103,10 @@ void motor_pivot(Direction dir, Turn_Angle angle, int speed) {
       turn_delay = 1000;
       break;
      case Turn_Angle_Med:
-      turn_delay = 2000;
+      turn_delay = 1600;
       break;
      case Turn_Angle_Large:
-      turn_delay = 4000;
+      turn_delay = 2600;
       break;
      default:
       turn_delay = 500;
@@ -113,4 +117,5 @@ void motor_pivot(Direction dir, Turn_Angle angle, int speed) {
   // Stop the motors when finished turning
   motor_stop();
 }
+
 

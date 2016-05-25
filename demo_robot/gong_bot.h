@@ -14,9 +14,9 @@
 #include "ping.h"
 
 #define DANGER_THRESHOLD_CM       5
-#define EVADE_REVERSE_DURATION    2500
+#define EVADE_REVERSE_DURATION    1500
 #define EVADE_PAUSE_DURATION      800
-#define GONG_PAUSE_DURATION       2000
+#define GONG_PAUSE_DURATION       1000
 #define STRIKING_DISTANCE_CM      8
 #define MAX_RANGE_FLAG            0
 
@@ -57,6 +57,8 @@ void evade_edge(Danger_Side danger_side) {
 
   motor_stop();
   delay(EVADE_PAUSE_DURATION);
+  
+  motor_drive_fwd(DRIVE_SLOW);
 }
 
 /*

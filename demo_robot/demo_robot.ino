@@ -31,14 +31,16 @@ void setup() {
 
   // Wait a little while, then start driving forward
   delay(2000);
-  //motor_drive_fwd(DRIVE_SLOW);
-  motor_drive_rev(DRIVE_SLOW);
+  motor_drive_fwd(DRIVE_SLOW);
+  //motor_drive_rev(DRIVE_SLOW);
   //mallet_swing();
   //gong();
   //mallet.write(90);
   //analogWrite(MOTOR_RIGHT_PIN_0, 80);
   //analogWrite(MOTOR_RIGHT_PIN_1, 0);
-  while(1) {}
+  //motor_pivot(Direction_Right, Turn_Angle_Large, DRIVE_SLOW);
+  
+  //while(1) {}
 }
 
 void loop() {
@@ -54,9 +56,10 @@ void loop() {
   }
 
   // 3 - Check if an obstacle was detected
-  /*if (gong_detected(center_ping_cm)) {
+  if (gong_detected(center_ping_cm)) {
     gong();
-  }*/
+    ping_update_all();
+  }
 
   motor_drive_fwd(DRIVE_SLOW);
 }

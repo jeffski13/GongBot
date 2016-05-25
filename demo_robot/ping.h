@@ -15,7 +15,7 @@
 #define PING_CENTER_TRIG_PIN      12
 #define PING_CENTER_ECHO_PIN      13
 
-#define PING_RIGHT_TRIG_PIN       3
+#define PING_RIGHT_TRIG_PIN       4
 #define PING_RIGHT_ECHO_PIN       2
 
 DistanceSensor* left_ping_ptr;
