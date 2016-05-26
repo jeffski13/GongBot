@@ -17,7 +17,7 @@
 #define EVADE_REVERSE_DURATION    1500
 #define EVADE_PAUSE_DURATION      800
 #define GONG_PAUSE_DURATION       1000
-#define STRIKING_DISTANCE_CM      8
+#define STRIKING_DISTANCE_CM      9
 #define MAX_RANGE_FLAG            0
 
 // Lists the different danger states for table edge detection
@@ -27,6 +27,32 @@ enum Danger_Side {
   Danger_Both,
   Danger_None
 };
+
+/*
+ * Randomizese the direction the robot turns
+ */
+Direction random_direction(void) {
+  long randNumber = random(0,2);
+  if(randNumber == 1) {
+    return Direction_Right;
+  }
+  else {
+    return Direction_Left;
+  }
+}
+
+Turn_Angle random_angle_size(void) {
+  long randNumber = random(0,3);
+  if(randNumber == 1) {
+    return Turn_Angle_Small;
+  }
+  else if(randNumber == 2) {
+    return Turn_Angle_Med;
+  }
+  else {
+    return Turn_Angle_Large;
+  }
+}
 
 /*
  * Commands the robot to back away from the table edge and turn to a different direction.
@@ -43,13 +69,13 @@ void evade_edge(Danger_Side danger_side) {
     
   switch (danger_side) {
     case Danger_Left:
-      motor_pivot(Direction_Right, Turn_Angle_Med, DRIVE_SLOW);
+      motor_pivot(Direction_Right, random_angle_size(), DRIVE_SLOW);
       break;
     case Danger_Right:
-      motor_pivot(Direction_Left, Turn_Angle_Med, DRIVE_SLOW);
+      motor_pivot(Direction_Left, random_angle_size(), DRIVE_SLOW);
       break;
     case Danger_Both:
-      motor_pivot(Direction_Left, Turn_Angle_Large, DRIVE_SLOW);
+      motor_pivot(random_direction(), random_angle_size(), DRIVE_SLOW);
       break;
     default:
       // This is for the Danger_None case, which should not occur.
@@ -101,9 +127,9 @@ Danger_Side assess_danger(long left_range_cm, long right_range_cm) {
  * Assumes that any object within striking distance is a gong!
  */
 bool gong_detected(long center_range_cm) {
-  if (center_range_cm <= STRIKING_DISTANCE_CM) {
+  if (center_range_cm <= STRIKING_DISTANCE_CM && center_range_cm != MAX_RANGE_FLAG) {
     return true;
-  }
+  }  
 
   return false;
 }

@@ -47,6 +47,11 @@ void loop() {
   
   // 1 - Get the latest ping sensor readings
   ping_update_all();
+//  Serial.print("Left Sensor: ");
+//  Serial.println(left_ping_cm);
+//  Serial.print("Right Sensor: ");
+//  Serial.println(right_ping_cm);
+//  return;
   
   // 2 - Check if an edge was detected
   edge_alert = assess_danger(left_ping_cm, right_ping_cm);

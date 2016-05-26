@@ -12,7 +12,7 @@
 #define MOTOR_RIGHT_PIN_0         5
 #define MOTOR_RIGHT_PIN_1         3
 
-#define RIGHT_MOTOR_FUDGE_FWD     32
+#define RIGHT_MOTOR_FUDGE_FWD     35
 #define RIGHT_MOTOR_FUDGE_REV     35
 #define RIGHT_MOTOR_TURN_FUDGE    40
 
